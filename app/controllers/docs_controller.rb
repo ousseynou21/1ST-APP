@@ -9,7 +9,7 @@ before_action :find_doc, only: [:show, :edit, :update, :destroy]
   end
 
   def new
-@doc = Doc.new
+    @doc = Doc.new
   end
 
   def create
@@ -26,8 +26,12 @@ before_action :find_doc, only: [:show, :edit, :update, :destroy]
   end
 
   def update
+  if @doc.update(doc_params)
+    redirect_to @doc
+    else
+      render 'edit'
   end
-
+end
   def destroy
   end
 
